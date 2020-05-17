@@ -1,0 +1,54 @@
+object Form3: TForm3
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = Single
+  Caption = 'Form3'
+  ClientHeight = 274
+  ClientWidth = 563
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object Button1: TButton
+    Position.X = 432.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 43.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'Perguntar'
+    OnClick = Button1Click
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Position.Y = 113.000000000000000000
+    Size.Width = 563.000000000000000000
+    Size.Height = 161.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Viewport.Width = 559.000000000000000000
+    Viewport.Height = 157.000000000000000000
+  end
+  object ButtonTrain: TButton
+    Position.X = 432.000000000000000000
+    Position.Y = 63.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 43.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = 'Treinar'
+    OnClick = ButtonTrainClick
+  end
+  object EditPergunta: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 18
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 425.000000000000000000
+    Size.Height = 43.000000000000000000
+    Size.PlatformDefault = False
+  end
+end
