@@ -3,7 +3,7 @@ unit MLP.Concret.Matrix;
 interface
 
 uses
-  System.SysUtils;
+  System.SysUtils, System.Threading, System.SyncObjs;
 
 type
 
@@ -139,17 +139,19 @@ end;
 
 function TMatrixSingle.Map(AMatrixMapCallback: TMatrixMapCallback): TMatrixSingle;
 var
-  Y: Integer;
-  X: Integer;
+  LData: TArray<TArray<Single>>;
 begin
   Result := Self;
-  for Y := Low(FData) to High(FData) do
-  begin
-    for X := Low(FData[Y]) to High(FData[Y]) do
+  LData := FData;
+  TParallel.&For(Low(LData), High(LData),
+    procedure(Y: Int64)
+    var
+      X: Integer;
     begin
-      AMatrixMapCallback(FData[Y][X], Y, X)
-    end;
-  end;
+      for X := Low(LData[Y]) to High(LData[Y]) do
+        AMatrixMapCallback(LData[Y][X], Y, X);
+    end);
+  FData := LData;
 end;
 
 class function TMatrixSingle.Map(AMatrix: TMatrixSingle; AMatrixMapCallback: TMatrixMapCallback): TMatrixSingle;
